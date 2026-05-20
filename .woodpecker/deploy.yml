@@ -4,7 +4,7 @@ when:
 
 steps:
   - name: build
-    image: ghcr.io/gohugoio/hugo:v0.154.5
+    image: ghcr.io/gohugoio/hugo:v0.161.1
     when:
       - event: push
     environment:
@@ -12,12 +12,13 @@ steps:
     commands:
       - hugo build --gc -b $BASE_URL
   - name: deploy
-    image: ghcr.io/astral-sh/uv:python3.12-alpine
+    image: node:lts-alpine
     when:
       - event: push
     environment:
-      BUNNY_API_KEY:
-        from_secret: BUNNY_API_KEY
+      CLOUDFLARE_ACCOUNT_ID:
+        from_secret: CLOUDFLARE_ACCOUNT_ID
+      CLOUDFLARE_API_TOKEN:
+        from_secret: CLOUDFLARE_WORKERS_API_TOKEN
     commands:
-      - uvx trifold publish --delete
-      - uvx trifold redirects
+      - npx -y wrangler deploy 

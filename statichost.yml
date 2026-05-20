@@ -1,3 +1,0 @@
-image: ghcr.io/gohugoio/hugo:v0.154.5
-command: hugo -b $BASE_URL
-public: public

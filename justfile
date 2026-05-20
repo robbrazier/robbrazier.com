@@ -12,14 +12,6 @@ update:
 	version="${latestTag#v}"
 	mise use --pin "hugo-extended@$version"
 
-	file="statichost.yml"
-	image="ghcr.io/gohugoio/hugo"
-	printf "$file before => "
-	grep "$image" $file
-	sed -i "s!$image:.*!$image:$latestTag!" $file
-	printf "$file after => "
-	grep "$image" $file
-
 	file=".woodpecker/deploy.yml"
 	image="ghcr.io/gohugoio/hugo"
 	printf "$file before => "

@@ -5,3 +5,10 @@ resources/_gen/
 !.hugo/version
 .hugo_build.lock
 node_modules/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

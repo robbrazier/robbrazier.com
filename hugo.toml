@@ -1,5 +1,5 @@
 baseURL = 'https://robbrazier.com'
-languageCode = 'en-gb'
+locale = 'en-gb'
 title = 'Rob Brazier'
 enableRobotsTXT = true
 

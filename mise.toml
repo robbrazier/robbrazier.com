@@ -1,7 +1,8 @@
 [tools]
-hugo-extended = "0.154.5"
+hugo-extended = "0.161.1"
 just = "latest"
 lefthook = "latest"
+wrangler = "latest"
 
 [hooks]
 postinstall = "lefthook install"
