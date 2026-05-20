@@ -12,7 +12,7 @@
 		{{ template "_internal/opengraph.html" . }}
 		{{ template "_internal/schema.html" . }}
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="content-security-policy" content="default-src 'self'; style-src-elem 'self' fonts.bunny.net; font-src 'self' fonts.bunny.net">
+		<meta http-equiv="content-security-policy" content="default-src 'self'; connect-src 'self' robbrazier.goatcounter.com; style-src-elem 'self' fonts.bunny.net; font-src 'self' fonts.bunny.net">
 		{{ with .OutputFormats.Get "rss" -}}
 		<link rel={{.Rel}} type={{.MediaType.Type}} href={{.Permalink}} title={{site.Title}}>
 		{{ end }}
