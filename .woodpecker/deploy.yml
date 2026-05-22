@@ -21,4 +21,4 @@ steps:
       CLOUDFLARE_API_TOKEN:
         from_secret: CLOUDFLARE_WORKERS_API_TOKEN
     commands:
-      - npx -y wrangler deploy --message "$(git log -1 --pretty=format:%B)"
+      - npx -y wrangler deploy
