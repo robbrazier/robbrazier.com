@@ -34,6 +34,7 @@ jobs:
           BASE_URL: https://robbrazier.com
 
       - name: deploy
+        if: forgejo.ref == 'refs/heads/main'
         run: npx -y @bunny.net/cli sites deploy public
         env:
           BUNNYNET_API_KEY: ${{ secrets.BUNNYNET_API_KEY }}
