@@ -31,6 +31,6 @@ jobs:
           BASE_URL: https://robbrazier.com
 
       - name: deploy
-        uses: npx -y @bunny.net/cli sites deploy public
+        run: npx -y @bunny.net/cli sites deploy public
         env:
           BUNNYNET_API_KEY: ${{ secrets.BUNNYNET_API_KEY }}
