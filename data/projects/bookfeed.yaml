@@ -1,0 +1,6 @@
+title: Bookfeed
+description: A RSS Feed generator to follow new releases on Hardcover and maybe more
+link: https://github.com/RobBrazier/bookfeed
+icons:
+  - go
+  - opensourceinitiative
