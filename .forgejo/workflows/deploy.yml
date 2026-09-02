@@ -9,14 +9,11 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-go-latest
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-go@v7
-        with:
-          go-version-file: go.mod
       - uses: actions/cache@v6
         with:
           path: ${{ env.HUGO_CACHEDIR }} # <- Use the same env variable just right here
