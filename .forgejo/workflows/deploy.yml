@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: build-${{ forgejo.ref }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-go-latest
+    env:
+      HUGO_CACHEDIR: /tmp/hugo_cache
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        with:
+          path: ${{ env.HUGO_CACHEDIR }} # <- Use the same env variable just right here
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+      - uses: xmengnet/actions-hugo@v3
+        with:
+          hugo-version: 0.161.1
+          extended: true
+
+      - name: build site
+        run: hugo build --gc --minify -b $BASE_URL
+        env:
+          BASE_URL: https://robbrazier.com
+
+      - name: deploy
+        if: forgejo.ref == 'refs/heads/main'
+        run: npx -y @bunny.net/cli sites deploy public
+        env:
+          BUNNYNET_API_KEY: ${{ secrets.BUNNYNET_API_KEY }}
