@@ -27,7 +27,7 @@ jobs:
 
       - name: build site
         run: hugo build --gc --minify -b $BASE_URL
-        environment:
+        env:
           BASE_URL: https://robbrazier.com
 
       - name: deploy
