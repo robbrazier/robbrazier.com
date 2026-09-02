@@ -14,7 +14,7 @@ jobs:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ${{ env.HUGO_CACHEDIR }} # <- Use the same env variable just right here
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
